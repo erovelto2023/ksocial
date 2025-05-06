@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Search, Filter, ArrowRight, BookOpen, Save, Download } from "lucide-react"
+import { Search, Filter, ArrowRight, BookOpen, Save, Download, Clock } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -143,7 +143,7 @@ const difficultyLevels = [
   { value: "challenging", label: "Challenging" },
 ]
 
-export default function ShadowWorkPage() {
+function ShadowWorkPage() {
   const [prompts, setPrompts] = useState(mockPrompts)
   const [searchTerm, setSearchTerm] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("all")
@@ -395,4 +395,17 @@ export default function ShadowWorkPage() {
                     </Button>
                   </CardFooter>
                 </Card>
-              )\
+              ))}
+            </div>
+          ) : (
+            <div>
+              No prompts found.
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default ShadowWorkPage;

@@ -5,7 +5,7 @@ import { Play, Pause, RotateCcw, Volume2, VolumeX } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Slider } from "@/components/ui/slider"
-import { Select, SelectItem } from "@/components/ui/select"
+import { Select, SelectItem, SelectContent } from "@/components/ui/select"
 import { Switch } from "@/components/ui/switch"
 import { Label } from "@/components/ui/label"
 
@@ -245,11 +245,13 @@ export default function MeditationTimer() {
               <div className="space-y-2">
                 <Label>Duration</Label>
                 <Select onValueChange={handlePresetTimeChange} defaultValue="10">
-                  {presetTimes.map((time) => (
-                    <SelectItem key={time.value} value={time.value}>
-                      {time.label}
-                    </SelectItem>
-                  ))}
+                  <SelectContent>
+                    {presetTimes.map((time) => (
+                      <SelectItem key={time.value} value={time.value}>
+                        {time.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
                 </Select>
               </div>
 
@@ -264,9 +266,11 @@ export default function MeditationTimer() {
                     defaultValue="300"
                     disabled={!intervalBells}
                   >
-                    <SelectItem value="60">Every 1 minute</SelectItem>
-                    <SelectItem value="300">Every 5 minutes</SelectItem>
-                    <SelectItem value="600">Every 10 minutes</SelectItem>
+                    <SelectContent>
+                      <SelectItem value="60">Every 1 minute</SelectItem>
+                      <SelectItem value="300">Every 5 minutes</SelectItem>
+                      <SelectItem value="600">Every 10 minutes</SelectItem>
+                    </SelectContent>
                   </Select>
                 )}
               </div>
@@ -281,12 +285,14 @@ export default function MeditationTimer() {
               <div className="space-y-2">
                 <Label>Background Sound</Label>
                 <Select onValueChange={handleSoundChange} defaultValue="none">
-                  <SelectItem value="none">None</SelectItem>
-                  {backgroundSounds.map((sound) => (
-                    <SelectItem key={sound.id} value={sound.id}>
-                      {sound.name}
-                    </SelectItem>
-                  ))}
+                  <SelectContent>
+                    <SelectItem value="none">None</SelectItem>
+                    {backgroundSounds.map((sound) => (
+                      <SelectItem key={sound.id} value={sound.id}>
+                        {sound.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
                 </Select>
               </div>
 
